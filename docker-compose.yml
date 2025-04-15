@@ -1,0 +1,13 @@
+services:
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgresfd
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: filedownload
+    ports:
+      - "5442:5432"
+    volumes:
+      - fdpgdata:/var/lib/postgresql/data
+volumes:
+  fdpgdata:

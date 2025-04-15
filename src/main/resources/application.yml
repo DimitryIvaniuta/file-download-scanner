@@ -1,0 +1,35 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5442/filedownload
+    username: postgresfd
+    password: secret
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: GOOGLE_CLIENT_ID
+            client-secret: GOOGLE_SECRET
+            scope:
+              - openid
+              - profile
+              - email
+        provider:
+          google:
+            authorization-uri: https://accounts.google.com/o/oauth2/v2/auth
+            token-uri: https://oauth2.googleapis.com/token
+            user-info-uri: https://www.googleapis.com/oauth2/v3/userinfo
+
+app:
+  portal:
+    resourceUrl: https://www.ultimate-guitar.com/
+
+download:
+  dir: "./downloads"
