@@ -12,8 +12,13 @@ import java.time.LocalDateTime;
 @Setter
 public class DownloadedFile {
 
+    /**
+     * Primary key.
+     */
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "FD_UNIQUE_ID")
+    @SequenceGenerator(name = "FD_UNIQUE_ID", sequenceName = "FD_UNIQUE_ID", allocationSize = 1)
+    @Column(name = "id", nullable = false)
     private Long id;
 
     // URL used to identify the downloaded file
